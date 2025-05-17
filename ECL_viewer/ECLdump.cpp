@@ -164,9 +164,16 @@ std::istream& operator>>(std::istream& is, ECL_File& ecl_file)
 		ecl_file.mSubs.emplace_back(ptr,i,ecl_file.mSubNames[i]);
 		is>>ecl_file.mSubs[ecl_file.mSubs.size() - 1];
 	}
-
-
 	return is;
+}
+
+std::ostream& operator<<(std::ostream& os, ECL_Sub& ecl_sub)
+{
+	os.write((char*)&ecl_sub.mHeader, sizeof(ECL_SubHeader));
+	for (int i = 0; i < ecl_sub.mInses.size(); i++){
+		os << ecl_sub.mInses[i];
+	}
+	return os;
 }
 
 void ECL_File::GetInsList(std::vector<ECL_Ins>& out_inses)

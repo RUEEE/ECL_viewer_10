@@ -155,6 +155,7 @@ public:
 	void Clear() { memset(&mHeader, 0, sizeof(mHeader)); mInses.clear(); mOfs = 0; mIndex = 0; mName = ""; }
 };
 std::istream& operator>>(std::istream& is, ECL_Sub& ecl_sub);
+std::ostream& operator<<(std::ostream& os, ECL_Sub& ecl_sub);
 
 
 class ECL_File
